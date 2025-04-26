@@ -21,7 +21,6 @@ jobs:
             mkdir -p ./.bin
             for dir in */; do
               [ -d "$dir" ] || continue
-              mkdir -p "./.bin/${dir}"
               zip -r "./.bin/${dir%/}.zip" "$dir"
             done
 
