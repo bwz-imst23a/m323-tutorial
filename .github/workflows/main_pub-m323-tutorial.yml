@@ -23,10 +23,6 @@ jobs:
               [ -d "$dir" ] || continue
               mkdir -p "./.bin/${dir}"
               zip -r "./.bin/${dir%/}.zip" "$dir"
-              for subdir in "$dir"*/; do
-                [ -d "$subdir" ] || continue
-                zip -r "./.bin/${subdir%/}.zip" "$subdir"
-              done
             done
 
       - name: Setup Git
