@@ -1,12 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { UpperCasePipe } from '@angular/common';
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
+import { HeroDetail } from "./hero-detail";
 
 @Component({
   selector: 'app-heroes',
-  imports: [ FormsModule, UpperCasePipe ],
+  imports: [ HeroDetail ],
   template: `
     <h2>My Heroes</h2>
     <ul class="heroes">
@@ -20,14 +19,7 @@ import { HEROES } from './mock-heroes';
       }
     </ul>
     @if (selectedHero()) {
-      <div>
-        <h2>{{selectedHero()!.name | uppercase}} Details</h2>
-        <div>id: {{selectedHero()!.id}}</div>
-        <div>
-          <label for="hero-name">Hero name: </label>
-          <input id="hero-name" [(ngModel)]="selectedHero()!.name" placeholder="name">
-        </div>
-      </div>
+      <app-hero-detail [hero]="selectedHero()"></app-hero-detail>
     }
   `,
   styles: `
