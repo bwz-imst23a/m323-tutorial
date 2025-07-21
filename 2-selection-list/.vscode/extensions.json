@@ -1,0 +1,11 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
+  "recommendations": [
+    "angular.ng-template",
+    "ms-vscode.remote-repositories",
+    "PKief.material-icon-theme",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "GitHub.vscode-pull-request-github"
+  ]
+}
