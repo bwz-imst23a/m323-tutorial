@@ -17,7 +17,16 @@ import { Messages } from './core/messaging/messages';
     
     <router-outlet />
   `,
-  styles: [],
+  styles: `
+    :host {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    main {
+      flex: 1;
+    }
+  `,
 })
 export class App {
   protected readonly title = signal('Tour of Heroes');
