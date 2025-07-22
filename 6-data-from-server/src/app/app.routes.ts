@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { HeroesComponent } from './core/components/heroes.component';
-import { DashboardComponent } from './core/components/dashboard.component';
-import { HeroDetailComponent } from './core/components/hero-detail.component';
+import { Heroes } from './core/heroes/heroes';
+import { Dashboard } from './core/heroes/dashboard';
+import { HeroDetail } from './core/heroes/hero-detail';
 
 export const routes: Routes = [
-    { path: 'heroes', component: HeroesComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'detail/:id', component: HeroDetailComponent },
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: 'heroes', component: Heroes },
+    { path: 'dashboard', component: Dashboard },
+    { path: 'detail/:id', component: HeroDetail },
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];

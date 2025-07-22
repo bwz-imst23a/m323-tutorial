@@ -23,7 +23,7 @@ import { HeroDetail } from "./hero-detail";
     }
   `,
   styles: `
-    /* HeroesComponent's private CSS styles */
+    /* Heroes component's private CSS styles */
     .heroes {
       margin: 0 0 2em 0;
       list-style-type: none;

@@ -1,27 +1,33 @@
-import { Component, signal, inject, OnInit } from '@angular/core';
-import { Hero } from './hero';
+import { Component, inject, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { HeroStore } from './hero-store';
-import { HeroDetail } from "./hero-detail";
-import { MessageHandler } from '../messaging/message-handler';
 
 @Component({
   selector: 'app-heroes',
-  imports: [ HeroDetail ],
+  imports: [ RouterLink ],
   template: `
     <h2>My Heroes</h2>
     <ul class="heroes">
       @for (hero of heroStore.heroes(); track hero.id) {
-        <li [class.selected]="hero === selectedHero()">
-          <button type="button" (click)="onSelect(hero)">
+        <li>
+          <button type="button" [routerLink]="['/detail', hero.id ]">
             <span class="badge">{{hero.id}}</span>
             <span class="name">{{hero.name}}</span>
           </button>
+          <button type="button" title="remove hero" class="remove-action" (click)="remove(hero.id)">X</button>
         </li>
       }
     </ul>
-    @if (selectedHero()) {
-      <app-hero-detail [hero]="selectedHero()"></app-hero-detail>
-    }
+    <div>
+      <h2>Create a Hero</h2>
+      <label for="new-hero">Name: </label>
+      <input id="new-hero" #heroName />
+      
+      <div>
+        <!-- (click) passes input value to add() and then clears the input -->
+        <button type="button" (click)="add(heroName.value); heroName.value=''">Add hero</button>
+      </div>
+    </div>
   `,
   styles: `
     /* Heroes component's private CSS styles */
@@ -73,36 +79,26 @@ import { MessageHandler } from '../messaging/message-handler';
         background-color: #525252;
         color: #fafafa;
       }
-    }
 
-    .heroes li.selected {
-      button {
-        background-color: black;
-        color: white;
-      }
-
-      button:hover {
-        background-color: #505050;
-        color: white;
-      }
-
-      button:active {
-        background-color: black;
-        color: white;
+      button.remove-action {
+        flex: none;
+        padding: 0.5rem;
       }
     }
   `
 })
 export class Heroes implements OnInit {
-  protected readonly messageHandler = inject(MessageHandler);
-  protected readonly selectedHero = signal<Hero | null>(null);
   protected readonly heroStore = inject(HeroStore);
-  
-  protected onSelect(hero: Hero): void {
-    this.selectedHero.set(hero);
-    this.messageHandler.add(`Heroes component: Selected hero id=${hero.id}`);
-  }
+
   ngOnInit() {
     this.heroStore.load();
+  }
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroStore.add(name);
+  }
+  remove(id: number): void {
+    this.heroStore.remove(id);
   }
 }

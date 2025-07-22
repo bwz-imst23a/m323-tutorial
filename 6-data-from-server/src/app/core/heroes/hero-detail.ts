@@ -17,6 +17,7 @@ import { MessageHandler } from '../messaging/message-handler';
       <input id="hero-name" [(ngModel)]="hero()!.name" placeholder="name">
     </div>
   </div>
+  <button type="button" (click)="save()">save</button>
 }
   `,
   styles: ` `
@@ -30,5 +31,8 @@ export class HeroDetail implements OnInit {
   ngOnInit() {
     this.messageHandler.add(`HeroDetail: fetch hero id=${this.id()}`);
     this.heroStore.load();
+  }
+  save(): void {
+    this.heroStore.save(this.hero()!);
   }
 }
