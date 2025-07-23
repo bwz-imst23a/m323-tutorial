@@ -1,6 +1,6 @@
 # AngularTourOfHeroes
 
-This folder contains the local installation of the [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+This folder contains the local installation of the [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
 
 ## Project scaffolding
 
