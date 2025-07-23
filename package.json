@@ -1,0 +1,12 @@
+{
+  "name": "m323-tutorial",
+  "version": "0.1.3",
+  "scripts": {
+    "build": "cd ./8-template-forms && npx ng build --output-path=../dist",
+    "postinstall": "cd ./8-template-forms && npm ci",
+    "start": "cd ./8-template-forms && npm start"
+  },
+  "private": false,
+  "dependencies": {
+  }
+}
