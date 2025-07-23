@@ -20,7 +20,7 @@ export class HeroResource {
       .pipe(
         tap(_ => console.log('fetched heroes')),
         catchError((err) => {
-          // TODO: send the error to remote logging infrastructure or the MessageService
+          // TODO: send the error to remote logging infrastructure or the MessageHandler
           console.trace(`fetch failed: ${err}`, err);
           return of([]); // let the app keep running by returning an empty result.
         })

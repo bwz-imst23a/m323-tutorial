@@ -32,10 +32,10 @@ import { Hero } from '../resources/dto/hero';
 })
 export class HeroesOrigin implements OnInit {
   protected readonly heroes = signal<Hero[]>([]);
-  private readonly heroResourceService = inject(HeroResource);
+  private readonly heroResource = inject(HeroResource);
 
   ngOnInit() {
-    this.heroResourceService.getHeroes().subscribe(heroes => {
+    this.heroResource.getHeroes().subscribe(heroes => {
       this.heroes.set(heroes);
     });
   }

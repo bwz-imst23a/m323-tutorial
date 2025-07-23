@@ -84,6 +84,11 @@ import { HeroStore } from './hero-store';
         flex: none;
         padding: 0.5rem;
       }
+
+      button.remove-action:hover {
+        background-color: #e3c6c6ff;
+        color: red;
+      }
     }
   `
 })

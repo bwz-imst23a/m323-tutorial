@@ -17,7 +17,7 @@ import { MessageHandler } from '../messaging/message-handler';
       <input id="hero-name" [(ngModel)]="hero()!.name" placeholder="name">
     </div>
   </div>
-  <button type="button" (click)="save()">save</button>
+  <button type="button" (click)="save()">Save</button>
 }
   `,
   styles: ` `

@@ -20,6 +20,9 @@ export class HeroStore {
   save(hero: Hero) {
     this.resource.put(hero).subscribe(() => {
       this.messageHandler.add(`HeroStore: updated hero id=${hero.id}`);
+
+      const updatedCache = this.heroes().map(h => h.id !== hero.id ? h : hero);
+      this.heroes.set(updatedCache);
     });
   }
   add(name: string) {
